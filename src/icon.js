@@ -65,7 +65,9 @@
         Icon.getName = function (name) {
             var i = 1, fix;
 
-            name = name.replace(/[\s.]+/gi, "-").replace(/[^a-z0-9\-]/gi, "_");
+            //name = name.replace(/[\s.]+/gi, "-").replace(/[^a-z0-9\-]/gi, "_");
+            console.log(name)
+            name = name.replace("\.png","").replace(/[^a-z0-9\-]/gi, "_");            
 
             if (nameCache[name]) {
                 do {

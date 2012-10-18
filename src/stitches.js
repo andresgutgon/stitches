@@ -235,7 +235,9 @@
                 ];
 
                 $(placedIcons).each(function (idx, icon) {
-                    css = css.concat([
+                    css = css.concat([                     
+                        "." + prefix + "-" + icon.name + "-after:after,",
+                        "." + prefix + "-" + icon.name + "-before:before,",
                         "." + prefix + "-" + icon.name + " {",
                         "    width: " + icon.image.width + "px;",
                         "    height: " + icon.image.height + "px;",
