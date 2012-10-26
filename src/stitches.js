@@ -20,7 +20,8 @@
             "jsdir": "js",
             "prefix": "sprite",
             "padding": 10,
-            "dataURI": false
+            "dataURI": false,
+            "serverImages": []
         };
 
         return {
@@ -46,6 +47,7 @@
                 S.sub("page.apis.done",      S.Page.bindCabinet);
                 S.sub("page.apis.done",      S.Page.bindOptions);
                 S.sub("page.apis.done",      S.Page.subscribe);
+                S.sub("page.apis.done",      S.File.queueRemoteIcons);
                 S.sub("page.drop.done",      S.File.queueFiles);
                 S.sub("file.queue.done",     S.File.queueIcons);
                 S.sub("file.icon.done",      S.Page.addIcon);
@@ -235,7 +237,7 @@
                 ];
 
                 $(placedIcons).each(function (idx, icon) {
-                    css = css.concat([                     
+                    css = css.concat([
                         "." + prefix + "-" + icon.name + "-after:after,",
                         "." + prefix + "-" + icon.name + "-before:before,",
                         "." + prefix + "-" + icon.name + " {",

@@ -76,6 +76,7 @@
                 /* notify */
                 rendered = true;
                 S.pub("page.render.done");
+
             },
 
             // ## errorHandler

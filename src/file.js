@@ -28,13 +28,29 @@
             //
             //     @param {FileList} files From a drop event
             queueFiles: function (files) {
+                console.log("Hola");
                 $.each(files, function (i, file) {
+
                     if (/jpeg|png|gif/.test(file.type)) {
                         readQueue.push(file);
                         S.pub("file.queue.done", file);
                     }
                 });
             },
+
+            // ### queueRemoteIcons
+            //
+            // Read files from remote folder
+            // to read in the image as data and create a new `Icon`
+            queueRemoteIcons: function () {
+                $.each(S.settings.serverImages, function(index, image) {
+                    var icon = new S.Icon(image.name, image.src);
+                    S.iconQueue.push(icon);
+                    /* notify */
+                    S.pub("file.icon.done", icon);
+                });
+            },
+
 
             // ### queueIcons
             //
@@ -44,6 +60,7 @@
                 var file, reader;
 
                 file = readQueue.shift();
+
                 if (file) {
                     try {
                         reader = new FileReader();
