@@ -66,26 +66,21 @@
     <script>
       var serverImages = []
       <?php
-        $folder ="Your-folder-name";
+        $folder ="your-folder";
         $files_array = readFolderContent($folder);
         for($i = 0; $i < count($files_array); ++$i) {
-            $name = "lalal";
+            $file_name = "lalal";
             $imagedata = file_get_contents( $files_array[$i] );
             $base64 = base64_encode( $imagedata );
             $src = 'data:image/png;base64,' . $base64;
       ?>
-
-            var image = document.createElement('img');
             var base64blob = "<?php echo $base64; ?>"
-            image.src = 'data:image/png;base64,'+ base64blob;
-            var imageObject = new Image();
-
-            imageObject.src = image.src;
-            var image_fake = {
-              "name" : "lalal",
-              "src"  : image.src
+            var src = 'data:image/png;base64,'+ base64blob;
+            var imageData = {
+              "name" : "<?php echo $file_name; ?>",
+              "src"  : src
             }
-            serverImages.push(image_fake);
+            serverImages.push(imageData);
 
       <?php
         }
